@@ -584,7 +584,167 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"8lqZg":[function(require,module,exports) {
+var _createElement = require("./createElement");
+var _store = require("./store");
+var _render = require("./render");
+var _main = require("./main");
+var _cards = require("./cards");
 
-},{}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
+},{"./cards":"wDC3l","./createElement":"hqWTp","./store":"d8qyu","./render":"lPFSt","./main":"gLLPy"}],"wDC3l":[function(require,module,exports) {
+var _store = require("./store");
+var _createElement = require("./createElement");
+var _render = require("./render");
+const createCard = ({ id, title, priceLast, img })=>{
+    const cardButtonElement = (0, _createElement.createElement)("button", [], {
+        cssClass: [
+            "product-card__button"
+        ],
+        id: Number(id)
+    });
+    const cardPriceElement = (0, _createElement.createElement)("div", [
+        document.createTextNode(priceLast)
+    ], {
+        cssClass: [
+            "product-card__price"
+        ]
+    });
+    const cardNameElement = (0, _createElement.createElement)("div", [
+        document.createTextNode(title)
+    ], {
+        cssClass: [
+            "product-card__name"
+        ]
+    });
+    const cardImgElement = (0, _createElement.createElement)("img", [], {
+        cssClass: [
+            "product-card__img"
+        ],
+        attrs: {
+            src: img,
+            alt: title
+        }
+    });
+    const productCardElement = (0, _createElement.createElement)("div", [
+        cardImgElement,
+        cardNameElement,
+        cardPriceElement,
+        cardButtonElement
+    ], {
+        cssClass: [
+            "product-card"
+        ]
+    });
+    return productCardElement;
+};
+(0, _store.getDate)().then((data)=>{
+    data.map((productData)=>{
+        const productCard = createCard(productData);
+        (0, _render.render)(productCard, ".main__product-cards");
+    });
+}).catch((error)=>{
+    console.error("\u041F\u0440\u043E\u0438\u0437\u043E\u0448\u043B\u0430 \u043E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u0438 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0438 \u0434\u0430\u043D\u043D\u044B\u0445:", error);
+});
+
+},{"./store":"d8qyu","./createElement":"hqWTp","./render":"lPFSt"}],"d8qyu":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDate", ()=>getDate);
+async function getDate() {
+    try {
+        const responce = await fetch("https://634c0fbd317dc96a30907dcb.mockapi.io/CARDS");
+        if (!responce.ok) throw new Error("WhoOps");
+        const data = await responce.json();
+        return data;
+    } catch (error) {
+        console.log("Something wrong", error);
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"hqWTp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createElement", ()=>createElement);
+function createElement(type, childs = [], options = {}) {
+    const cssClass = options.cssClass || [];
+    const attrs = options.attrs || {};
+    const element = document.createElement(type);
+    element.classList.add(...cssClass);
+    Object.keys(attrs).forEach((key)=>{
+        element.setAttribute(key, attrs[key]);
+    });
+    element.append(...childs);
+    return element;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lPFSt":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+function render(element, parentClassName) {
+    const rootElement = document.querySelector(parentClassName);
+    rootElement.append(element);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gLLPy":[function(require,module,exports) {
+var _createElement = require("./createElement");
+var _render = require("./render");
+const cardsElement = (0, _createElement.createElement)("div", [], {
+    cssClass: [
+        "main__product-cards"
+    ]
+});
+const titleCardElement = (0, _createElement.createElement)("h2", [], {
+    cssClass: [
+        "main__title"
+    ]
+});
+const mainElement = (0, _createElement.createElement)("div", [
+    titleCardElement,
+    cardsElement
+], {
+    cssClass: [
+        "main"
+    ]
+});
+const containerElement = (0, _createElement.createElement)("div", [
+    mainElement
+], {
+    cssClass: [
+        "container"
+    ]
+});
+(0, _render.render)(containerElement, ".root");
+
+},{"./createElement":"hqWTp","./render":"lPFSt"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
 
 //# sourceMappingURL=index.975ef6c8.js.map
