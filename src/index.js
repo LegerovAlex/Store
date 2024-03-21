@@ -1,5 +1,3 @@
-import "./createElement";
-import "./store";
-import "./render";
 import "./main";
+import "./header";
 import "./cards";

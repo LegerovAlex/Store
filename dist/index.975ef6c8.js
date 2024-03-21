@@ -584,13 +584,190 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"8lqZg":[function(require,module,exports) {
-var _createElement = require("./createElement");
-var _store = require("./store");
-var _render = require("./render");
 var _main = require("./main");
+var _header = require("./header");
 var _cards = require("./cards");
 
-},{"./cards":"wDC3l","./createElement":"hqWTp","./store":"d8qyu","./render":"lPFSt","./main":"gLLPy"}],"wDC3l":[function(require,module,exports) {
+},{"./main":"gLLPy","./header":"ef18b","./cards":"wDC3l"}],"gLLPy":[function(require,module,exports) {
+var _createElement = require("./createElement");
+var _render = require("./render");
+var _header = require("./header");
+const cardsElement = (0, _createElement.createElement)("div", [], {
+    cssClass: [
+        "main__product-cards"
+    ]
+});
+const titleCardElement = (0, _createElement.createElement)("h2", [], {
+    cssClass: [
+        "main__title"
+    ]
+});
+const mainElement = (0, _createElement.createElement)("div", [
+    titleCardElement,
+    cardsElement
+], {
+    cssClass: [
+        "main"
+    ]
+});
+const containerElement = (0, _createElement.createElement)("div", [
+    (0, _header.headerElement),
+    mainElement
+], {
+    cssClass: [
+        "container"
+    ]
+});
+(0, _render.render)(containerElement, "#root");
+
+},{"./createElement":"hqWTp","./render":"lPFSt","./header":"ef18b"}],"hqWTp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createElement", ()=>createElement);
+function createElement(type, childs = [], options = {}) {
+    const cssClass = options.cssClass || [];
+    const attrs = options.attrs || {};
+    const element = document.createElement(type);
+    element.classList.add(...cssClass);
+    Object.keys(attrs).forEach((key)=>{
+        element.setAttribute(key, attrs[key]);
+    });
+    element.append(...childs);
+    return element;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"lPFSt":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+function render(element, parentClassName) {
+    const rootElement = document.querySelector(parentClassName);
+    rootElement.append(element);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ef18b":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "headerElement", ()=>headerElement);
+var _createElement = require("./createElement");
+var _cartSvg = require("./assets/images/cart.svg");
+var _cartSvgDefault = parcelHelpers.interopDefault(_cartSvg);
+var _logoSvg = require("./assets/images/logo.svg");
+var _logoSvgDefault = parcelHelpers.interopDefault(_logoSvg);
+const cartElement = (0, _createElement.createElement)("img", [], {
+    cssClass: [
+        "header__cart"
+    ],
+    attrs: {
+        src: (0, _cartSvgDefault.default)
+    }
+});
+const inputElement = (0, _createElement.createElement)("input", [], {
+    cssClass: [
+        "header__search-input"
+    ],
+    attrs: {
+        type: "text",
+        placeholder: "Search..."
+    }
+});
+const searchElement = (0, _createElement.createElement)("div", [
+    inputElement
+], {
+    cssClass: [
+        "header__search"
+    ]
+});
+const logoElement = (0, _createElement.createElement)("img", [], {
+    cssClass: [
+        "header__logo"
+    ],
+    attrs: {
+        src: (0, _logoSvgDefault.default)
+    }
+});
+const headerElement = (0, _createElement.createElement)("div", [
+    logoElement,
+    searchElement,
+    cartElement
+], {
+    cssClass: [
+        "header"
+    ]
+});
+
+},{"./createElement":"hqWTp","./assets/images/cart.svg":"3Vwf1","./assets/images/logo.svg":"fnnxe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3Vwf1":[function(require,module,exports) {
+module.exports = require("6143475b4a3321a7").getBundleURL("bLxZJ") + "cart.6363c24d.svg" + "?" + Date.now();
+
+},{"6143475b4a3321a7":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"fnnxe":[function(require,module,exports) {
+module.exports = require("49db550da5ff03f2").getBundleURL("bLxZJ") + "logo.5b34b4d1.svg" + "?" + Date.now();
+
+},{"49db550da5ff03f2":"lgJ39"}],"wDC3l":[function(require,module,exports) {
 var _store = require("./store");
 var _createElement = require("./createElement");
 var _render = require("./render");
@@ -660,91 +837,6 @@ async function getDate() {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"hqWTp":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "createElement", ()=>createElement);
-function createElement(type, childs = [], options = {}) {
-    const cssClass = options.cssClass || [];
-    const attrs = options.attrs || {};
-    const element = document.createElement(type);
-    element.classList.add(...cssClass);
-    Object.keys(attrs).forEach((key)=>{
-        element.setAttribute(key, attrs[key]);
-    });
-    element.append(...childs);
-    return element;
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lPFSt":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "render", ()=>render);
-function render(element, parentClassName) {
-    const rootElement = document.querySelector(parentClassName);
-    rootElement.append(element);
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gLLPy":[function(require,module,exports) {
-var _createElement = require("./createElement");
-var _render = require("./render");
-const cardsElement = (0, _createElement.createElement)("div", [], {
-    cssClass: [
-        "main__product-cards"
-    ]
-});
-const titleCardElement = (0, _createElement.createElement)("h2", [], {
-    cssClass: [
-        "main__title"
-    ]
-});
-const mainElement = (0, _createElement.createElement)("div", [
-    titleCardElement,
-    cardsElement
-], {
-    cssClass: [
-        "main"
-    ]
-});
-const containerElement = (0, _createElement.createElement)("div", [
-    mainElement
-], {
-    cssClass: [
-        "container"
-    ]
-});
-(0, _render.render)(containerElement, ".root");
-
-},{"./createElement":"hqWTp","./render":"lPFSt"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
 
 //# sourceMappingURL=index.975ef6c8.js.map
