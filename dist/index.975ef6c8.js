@@ -584,43 +584,147 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"8lqZg":[function(require,module,exports) {
-var _main = require("./main");
 var _header = require("./header");
+var _main = require("./main");
 var _cards = require("./cards");
+var _footer = require("./footer");
 
-},{"./main":"gLLPy","./header":"ef18b","./cards":"wDC3l"}],"gLLPy":[function(require,module,exports) {
+},{"./header":"ef18b","./main":"gLLPy","./cards":"wDC3l","./footer":"2nDgU"}],"ef18b":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _createElement = require("./createElement");
 var _render = require("./render");
-var _header = require("./header");
-const cardsElement = (0, _createElement.createElement)("div", [], {
-    cssClass: [
-        "main__product-cards"
-    ]
-});
-const titleCardElement = (0, _createElement.createElement)("h2", [], {
-    cssClass: [
-        "main__title"
-    ]
-});
-const mainElement = (0, _createElement.createElement)("div", [
-    titleCardElement,
-    cardsElement
+var _cartSvg = require("./assets/icons/cart.svg");
+var _cartSvgDefault = parcelHelpers.interopDefault(_cartSvg);
+var _logoSvg = require("./assets/icons/logo.svg");
+var _logoSvgDefault = parcelHelpers.interopDefault(_logoSvg);
+var _sliderJpeg = require("./assets/images/slider.jpeg");
+var _sliderJpegDefault = parcelHelpers.interopDefault(_sliderJpeg);
+const subTitileElement = (0, _createElement.createElement)("p", [
+    document.createTextNode("Our environment, the world in which we live and work, is a mirror of our attitudes and expectations")
 ], {
     cssClass: [
-        "main"
+        "header-content__subtitle"
+    ]
+});
+const titleElement = (0, _createElement.createElement)("h1", [
+    document.createTextNode("Happiness blooms from within")
+], {
+    cssClass: [
+        "header-content__title"
+    ]
+});
+const sliderImgElement = (0, _createElement.createElement)("img", [], {
+    attrs: {
+        src: (0, _sliderJpegDefault.default)
+    },
+    cssClass: [
+        "header-content__slider-img"
+    ]
+});
+const sliderElement = (0, _createElement.createElement)("div", [
+    sliderImgElement
+], {
+    cssClass: [
+        "header-content__slider"
+    ]
+});
+const descElement = (0, _createElement.createElement)("div", [
+    titleElement,
+    subTitileElement
+], {
+    cssClass: [
+        "header-content__description"
+    ]
+});
+const contentElement = (0, _createElement.createElement)("div", [
+    descElement,
+    sliderElement
+], {
+    cssClass: [
+        "header-content"
+    ]
+});
+const rowElement = (0, _createElement.createElement)("div", [
+    contentElement
+], {
+    cssClass: [
+        "header-row"
+    ]
+});
+const cartImgElement = (0, _createElement.createElement)("img", [], {
+    cssClass: [
+        "header-cart__img"
+    ],
+    attrs: {
+        src: (0, _cartSvgDefault.default)
+    }
+});
+const cartElement = (0, _createElement.createElement)("button", [
+    cartImgElement
+], {
+    cssClass: [
+        "header-cart"
+    ]
+});
+const inputElement = (0, _createElement.createElement)("input", [], {
+    cssClass: [
+        "header-search__input"
+    ],
+    attrs: {
+        type: "text",
+        placeholder: "Search..."
+    }
+});
+const searchElement = (0, _createElement.createElement)("div", [
+    inputElement
+], {
+    cssClass: [
+        "header-search"
+    ]
+});
+const logoImgElement = (0, _createElement.createElement)("img", [], {
+    cssClass: [
+        "hedaer-logo__img"
+    ],
+    attrs: {
+        src: (0, _logoSvgDefault.default)
+    }
+});
+const logoElement = (0, _createElement.createElement)("div", [
+    logoImgElement
+], {
+    cssClass: [
+        "header-logo"
+    ]
+});
+const NavElement = (0, _createElement.createElement)("div", [
+    logoElement,
+    searchElement,
+    cartElement
+], {
+    cssClass: [
+        "header-nav"
     ]
 });
 const containerElement = (0, _createElement.createElement)("div", [
-    (0, _header.headerElement),
-    mainElement
+    NavElement,
+    rowElement
 ], {
     cssClass: [
-        "container"
+        "container",
+        "header-container"
     ]
 });
-(0, _render.render)(containerElement, "#root");
+const headerElement = (0, _createElement.createElement)("div", [
+    containerElement
+], {
+    cssClass: [
+        "header"
+    ]
+});
+(0, _render.render)(headerElement, "#root");
 
-},{"./createElement":"hqWTp","./render":"lPFSt","./header":"ef18b"}],"hqWTp":[function(require,module,exports) {
+},{"./createElement":"hqWTp","./render":"lPFSt","./assets/icons/cart.svg":"32ua5","./assets/icons/logo.svg":"gtEwr","./assets/images/slider.jpeg":"ffQd5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hqWTp":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createElement", ()=>createElement);
@@ -675,61 +779,10 @@ function render(element, parentClassName) {
     rootElement.append(element);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ef18b":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "headerElement", ()=>headerElement);
-var _createElement = require("./createElement");
-var _cartSvg = require("./assets/images/cart.svg");
-var _cartSvgDefault = parcelHelpers.interopDefault(_cartSvg);
-var _logoSvg = require("./assets/images/logo.svg");
-var _logoSvgDefault = parcelHelpers.interopDefault(_logoSvg);
-const cartElement = (0, _createElement.createElement)("img", [], {
-    cssClass: [
-        "header__cart"
-    ],
-    attrs: {
-        src: (0, _cartSvgDefault.default)
-    }
-});
-const inputElement = (0, _createElement.createElement)("input", [], {
-    cssClass: [
-        "header__search-input"
-    ],
-    attrs: {
-        type: "text",
-        placeholder: "Search..."
-    }
-});
-const searchElement = (0, _createElement.createElement)("div", [
-    inputElement
-], {
-    cssClass: [
-        "header__search"
-    ]
-});
-const logoElement = (0, _createElement.createElement)("img", [], {
-    cssClass: [
-        "header__logo"
-    ],
-    attrs: {
-        src: (0, _logoSvgDefault.default)
-    }
-});
-const headerElement = (0, _createElement.createElement)("div", [
-    logoElement,
-    searchElement,
-    cartElement
-], {
-    cssClass: [
-        "header"
-    ]
-});
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"32ua5":[function(require,module,exports) {
+module.exports = require("43c20018c1755142").getBundleURL("bLxZJ") + "cart.323bed84.svg" + "?" + Date.now();
 
-},{"./createElement":"hqWTp","./assets/images/cart.svg":"3Vwf1","./assets/images/logo.svg":"fnnxe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3Vwf1":[function(require,module,exports) {
-module.exports = require("6143475b4a3321a7").getBundleURL("bLxZJ") + "cart.6363c24d.svg" + "?" + Date.now();
-
-},{"6143475b4a3321a7":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+},{"43c20018c1755142":"lgJ39"}],"lgJ39":[function(require,module,exports) {
 "use strict";
 var bundleURL = {};
 function getBundleURLCached(id) {
@@ -764,22 +817,60 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"fnnxe":[function(require,module,exports) {
-module.exports = require("49db550da5ff03f2").getBundleURL("bLxZJ") + "logo.5b34b4d1.svg" + "?" + Date.now();
+},{}],"gtEwr":[function(require,module,exports) {
+module.exports = require("c0c1c58e0ee29f9").getBundleURL("bLxZJ") + "logo.0ff1e26a.svg" + "?" + Date.now();
 
-},{"49db550da5ff03f2":"lgJ39"}],"wDC3l":[function(require,module,exports) {
+},{"c0c1c58e0ee29f9":"lgJ39"}],"ffQd5":[function(require,module,exports) {
+module.exports = require("a3ea5ad87d243bbc").getBundleURL("bLxZJ") + "slider.5bbae520.jpeg" + "?" + Date.now();
+
+},{"a3ea5ad87d243bbc":"lgJ39"}],"gLLPy":[function(require,module,exports) {
+var _createElement = require("./createElement");
+var _render = require("./render");
+const cardsElement = (0, _createElement.createElement)("div", [], {
+    cssClass: [
+        "main__product-cards"
+    ]
+});
+const titleElement = (0, _createElement.createElement)("h2", [
+    document.createTextNode("Featured")
+], {
+    cssClass: [
+        "main__title"
+    ]
+});
+const containerElement = (0, _createElement.createElement)("div", [
+    titleElement,
+    cardsElement
+], {
+    cssClass: [
+        "container",
+        "main-container"
+    ]
+});
+const mainElement = (0, _createElement.createElement)("div", [
+    containerElement
+], {
+    cssClass: [
+        "main"
+    ]
+});
+(0, _render.render)(mainElement, "#root");
+
+},{"./createElement":"hqWTp","./render":"lPFSt"}],"wDC3l":[function(require,module,exports) {
 var _store = require("./store");
 var _createElement = require("./createElement");
 var _render = require("./render");
 const createCard = ({ id, title, priceLast, img })=>{
-    const cardButtonElement = (0, _createElement.createElement)("button", [], {
+    const cardButtonElement = (0, _createElement.createElement)("button", [
+        document.createTextNode("BUY")
+    ], {
         cssClass: [
             "product-card__button"
         ],
         id: Number(id)
     });
     const cardPriceElement = (0, _createElement.createElement)("div", [
-        document.createTextNode(priceLast)
+        document.createTextNode(`${priceLast} $`)
     ], {
         cssClass: [
             "product-card__price"
@@ -837,6 +928,64 @@ async function getDate() {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2nDgU":[function(require,module,exports) {
+var _createElement = require("./createElement");
+var _render = require("./render");
+const emailElement = (0, _createElement.createElement)("div", [
+    document.createTextNode("email: example@example.com")
+], {
+    cssClass: [
+        "footer__email"
+    ]
+});
+const phoneElement = (0, _createElement.createElement)("div", [
+    document.createTextNode("tel: +123456789")
+], {
+    cssClass: [
+        "footer__phone"
+    ]
+});
+const contactsElement = (0, _createElement.createElement)("div", [
+    phoneElement,
+    emailElement
+], {
+    cssClass: [
+        "footer__contacts"
+    ]
+});
+const textElement = (0, _createElement.createElement)("p", [
+    document.createTextNode("*only for the same region")
+], {
+    cssClass: [
+        "footer__text"
+    ]
+});
+const titleElement = (0, _createElement.createElement)("h2", [
+    document.createTextNode("Free Shipping Services")
+], {
+    cssClass: [
+        "footer__title"
+    ]
+});
+const containerElement = (0, _createElement.createElement)("div", [
+    titleElement,
+    textElement,
+    contactsElement
+], {
+    cssClass: [
+        "container",
+        "footer-container"
+    ]
+});
+const footerElement = (0, _createElement.createElement)("div", [
+    containerElement
+], {
+    cssClass: [
+        "footer"
+    ]
+});
+(0, _render.render)(footerElement, "#root");
+
+},{"./createElement":"hqWTp","./render":"lPFSt"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
 
 //# sourceMappingURL=index.975ef6c8.js.map

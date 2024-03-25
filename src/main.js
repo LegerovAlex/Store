@@ -1,20 +1,23 @@
 import { createElement } from "./createElement";
 import { render } from "./render";
-import { headerElement } from "./header";
+
 const cardsElement = createElement("div", [], {
   cssClass: ["main__product-cards"],
 });
 
-const titleCardElement = createElement("h2", [], {
-  cssClass: ["main__title"],
+const titleElement = createElement(
+  "h2",
+  [document.createTextNode("Featured")],
+  {
+    cssClass: ["main__title"],
+  }
+);
+const containerElement = createElement("div", [titleElement, cardsElement], {
+  cssClass: ["container", "main-container"],
 });
 
-const mainElement = createElement("div", [titleCardElement, cardsElement], {
+const mainElement = createElement("div", [containerElement], {
   cssClass: ["main"],
 });
 
-const containerElement = createElement("div", [headerElement, mainElement], {
-  cssClass: ["container"],
-});
-
-render(containerElement, "#root");
+render(mainElement, "#root");

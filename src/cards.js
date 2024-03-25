@@ -3,14 +3,18 @@ import { createElement } from "./createElement";
 import { render } from "./render";
 
 const createCard = ({ id, title, priceLast, img }) => {
-  const cardButtonElement = createElement("button", [], {
-    cssClass: ["product-card__button"],
-    id: Number(id),
-  });
+  const cardButtonElement = createElement(
+    "button",
+    [document.createTextNode("BUY")],
+    {
+      cssClass: ["product-card__button"],
+      id: Number(id),
+    }
+  );
 
   const cardPriceElement = createElement(
     "div",
-    [document.createTextNode(priceLast)],
+    [document.createTextNode(`${priceLast} $`)],
     {
       cssClass: ["product-card__price"],
     }
