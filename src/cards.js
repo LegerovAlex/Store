@@ -2,7 +2,7 @@ import { getDate } from "./store";
 import { createElement } from "./createElement";
 import { render } from "./render";
 
-const createCard = ({ id, title, priceLast, img }) => {
+export const createCard = ({ id, title, priceLast, img }) => {
   const cardButtonElement = createElement(
     "button",
     [document.createTextNode("BUY")],

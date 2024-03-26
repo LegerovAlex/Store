@@ -1,6 +1,5 @@
 import { createElement } from "./createElement";
 import { render } from "./render";
-import cart from "./assets/icons/cart.svg";
 import logo from "./assets/icons/logo.svg";
 import slider from "./assets/images/slider.jpeg";
 
@@ -47,29 +46,6 @@ const rowElement = createElement("div", [contentElement], {
   cssClass: ["header-row"],
 });
 
-const cartImgElement = createElement("img", [], {
-  cssClass: ["header-cart__img"],
-  attrs: {
-    src: cart,
-  },
-});
-
-const cartElement = createElement("button", [cartImgElement], {
-  cssClass: ["header-cart"],
-});
-
-const inputElement = createElement("input", [], {
-  cssClass: ["header-search__input"],
-  attrs: {
-    type: "text",
-    placeholder: "Search...",
-  },
-});
-
-const searchElement = createElement("div", [inputElement], {
-  cssClass: ["header-search"],
-});
-
 const logoImgElement = createElement("img", [], {
   cssClass: ["hedaer-logo__img"],
   attrs: {
@@ -81,15 +57,7 @@ const logoElement = createElement("div", [logoImgElement], {
   cssClass: ["header-logo"],
 });
 
-const NavElement = createElement(
-  "div",
-  [logoElement, searchElement, cartElement],
-  {
-    cssClass: ["header-nav"],
-  }
-);
-
-const containerElement = createElement("div", [NavElement, rowElement], {
+const containerElement = createElement("div", [logoElement, rowElement], {
   cssClass: ["container", "header-container"],
 });
 
