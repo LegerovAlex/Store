@@ -98,12 +98,18 @@
   text-align: center;
 }
 .main-cart {
-  max-width: 60px;
+  width: 80px;
   background-color: rgb(0, 79, 68);
   padding: 10px;
+  border-radius: 50px;
 }
+
+.main-cart:hover {
+  background-color: rgb(28, 159, 141);
+  cursor: pointer;
+}
+
 .main-cart__img {
-  height: auto;
   max-width: 100%;
 }
 .main__product-cards {
@@ -152,6 +158,10 @@
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0px;
+}
+.product-card__button:hover {
+  background-color: rgba(0, 79, 68, 0.1);
+  cursor: pointer;
 }
 
 /* footer */

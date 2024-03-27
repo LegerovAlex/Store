@@ -589,8 +589,9 @@ var _main = require("./main");
 var _cards = require("./cards");
 var _footer = require("./footer");
 var _search = require("./search");
+var _addInCart = require("./addInCart");
 
-},{"./header":"ef18b","./main":"gLLPy","./cards":"wDC3l","./footer":"2nDgU","./search":"8gVq6"}],"ef18b":[function(require,module,exports) {
+},{"./header":"ef18b","./main":"gLLPy","./cards":"wDC3l","./footer":"2nDgU","./search":"8gVq6","./addInCart":"iw19V"}],"ef18b":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _createElement = require("./createElement");
 var _render = require("./render");
@@ -857,7 +858,7 @@ const mainElement = (0, _createElement.createElement)("div", [
 });
 (0, _render.render)(mainElement, "#root");
 
-},{"./createElement":"hqWTp","./render":"lPFSt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./assets/icons/cart.svg":"32ua5"}],"32ua5":[function(require,module,exports) {
+},{"./createElement":"hqWTp","./render":"lPFSt","./assets/icons/cart.svg":"32ua5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"32ua5":[function(require,module,exports) {
 module.exports = require("43c20018c1755142").getBundleURL("bLxZJ") + "cart.323bed84.svg" + "?" + Date.now();
 
 },{"43c20018c1755142":"lgJ39"}],"wDC3l":[function(require,module,exports) {
@@ -874,7 +875,9 @@ const createCard = ({ id, title, priceLast, img })=>{
         cssClass: [
             "product-card__button"
         ],
-        id: Number(id)
+        attrs: {
+            id: Number(id)
+        }
     });
     const cardPriceElement = (0, _createElement.createElement)("div", [
         document.createTextNode(`${priceLast} $`)
@@ -907,7 +910,10 @@ const createCard = ({ id, title, priceLast, img })=>{
     ], {
         cssClass: [
             "product-card"
-        ]
+        ],
+        attrs: {
+            id: Number(id)
+        }
     });
     return productCardElement;
 };
@@ -917,7 +923,7 @@ const createCard = ({ id, title, priceLast, img })=>{
         (0, _render.render)(productCard, ".main__product-cards");
     });
 }).catch((error)=>{
-    console.error("\u041F\u0440\u043E\u0438\u0437\u043E\u0448\u043B\u0430 \u043E\u0448\u0438\u0431\u043A\u0430 \u043F\u0440\u0438 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0438 \u0434\u0430\u043D\u043D\u044B\u0445:", error);
+    console.error("An error occurred while fetching the data:", error);
 });
 
 },{"./store":"d8qyu","./createElement":"hqWTp","./render":"lPFSt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d8qyu":[function(require,module,exports) {
@@ -996,27 +1002,64 @@ const footerElement = (0, _createElement.createElement)("div", [
 },{"./createElement":"hqWTp","./render":"lPFSt"}],"8gVq6":[function(require,module,exports) {
 var _cards = require("./cards");
 var _render = require("./render");
-var _store = require("./store");
 var _main = require("./main");
-(0, _main.searchElement).addEventListener("input", searchItems);
+var _debounce = require("./debounce");
+(0, _main.searchElement).addEventListener("input", (0, _debounce.debounce)(searchItems, 500));
 async function searchItems(event) {
-    let searchText = event.target.value.trim().toLowerCase();
+    const searchText = event.target.value.trim().toLowerCase();
+    const productContainer = document.querySelector(".main__product-cards");
+    productContainer.innerHTML = "";
     try {
-        const products = await (0, _store.getDate)();
-        const filteredProducts = products.filter((product)=>{
-            return product.title.toLowerCase().includes(searchText);
-        });
-        const productContainer = document.querySelector(".main__product-cards");
-        productContainer.innerHTML = "";
-        filteredProducts.forEach((data)=>{
-            const productCard = (0, _cards.createCard)(data);
+        const response = await fetch(`https://634c0fbd317dc96a30907dcb.mockapi.io/CARDS?search=${searchText}`);
+        if (!response.ok) throw new Error("No products found with this name");
+        const data = await response.json();
+        data.map((productData)=>{
+            const productCard = (0, _cards.createCard)(productData);
             (0, _render.render)(productCard, ".main__product-cards");
         });
     } catch (error) {
-        console.error("There was a problem:", error);
+        console.log("Error while executing the request:", error);
     }
 }
 
-},{"./cards":"wDC3l","./render":"lPFSt","./store":"d8qyu","./main":"gLLPy"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
+},{"./cards":"wDC3l","./render":"lPFSt","./main":"gLLPy","./debounce":"b4lyE"}],"b4lyE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "debounce", ()=>debounce);
+function debounce(func, delay) {
+    let timeroutId;
+    return function executedFunction(...args) {
+        clearTimeout(timeroutId);
+        timeroutId = setTimeout(()=>{
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iw19V":[function(require,module,exports) {
+async function addToCart(event) {
+    if (event.target.closest(".product-card__button")) {
+        event.preventDefault();
+        const buttonId = event.target.getAttribute("id");
+        try {
+            const responce = await fetch(`https://634c0fbd317dc96a30907dcb.mockapi.io/CARDS/${buttonId}`);
+            if (!responce.ok) throw new Error("Whoops");
+            const productData = await responce.json();
+            const uniqueKey = `${buttonId}_${Date.now()}`;
+            const productInfo = JSON.stringify({
+                id: productData.id,
+                title: productData.title,
+                priceLast: productData.priceLast
+            });
+            localStorage.setItem(uniqueKey, productInfo);
+        } catch (error) {
+            console.log("Error while fetching product data:", error);
+        }
+    }
+}
+const productCardsContainer = document.querySelector(".main__product-cards");
+productCardsContainer.addEventListener("click", addToCart);
+
+},{}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
 
 //# sourceMappingURL=index.975ef6c8.js.map

@@ -8,7 +8,9 @@ export const createCard = ({ id, title, priceLast, img }) => {
     [document.createTextNode("BUY")],
     {
       cssClass: ["product-card__button"],
-      id: Number(id),
+      attrs: {
+        id: Number(id),
+      },
     }
   );
 
@@ -41,6 +43,9 @@ export const createCard = ({ id, title, priceLast, img }) => {
     [cardImgElement, cardNameElement, cardPriceElement, cardButtonElement],
     {
       cssClass: ["product-card"],
+      attrs: {
+        id: Number(id),
+      },
     }
   );
 
@@ -55,5 +60,5 @@ getDate()
     });
   })
   .catch((error) => {
-    console.error("Произошла ошибка при получении данных:", error);
+    console.error("An error occurred while fetching the data:", error);
   });
