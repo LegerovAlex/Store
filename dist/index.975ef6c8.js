@@ -590,8 +590,9 @@ var _cards = require("./cards");
 var _footer = require("./footer");
 var _search = require("./search");
 var _addInCart = require("./addInCart");
+var _cart = require("./cart");
 
-},{"./header":"ef18b","./main":"gLLPy","./cards":"wDC3l","./footer":"2nDgU","./search":"8gVq6","./addInCart":"iw19V"}],"ef18b":[function(require,module,exports) {
+},{"./header":"ef18b","./main":"gLLPy","./cards":"wDC3l","./footer":"2nDgU","./search":"8gVq6","./addInCart":"iw19V","./cart":"dgms5"}],"ef18b":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _createElement = require("./createElement");
 var _render = require("./render");
@@ -944,19 +945,25 @@ async function getDate() {
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2nDgU":[function(require,module,exports) {
 var _createElement = require("./createElement");
 var _render = require("./render");
-const emailElement = (0, _createElement.createElement)("div", [
+const emailElement = (0, _createElement.createElement)("a", [
     document.createTextNode("email: example@example.com")
 ], {
     cssClass: [
         "footer__email"
-    ]
+    ],
+    attrs: {
+        href: "example@example.com"
+    }
 });
-const phoneElement = (0, _createElement.createElement)("div", [
+const phoneElement = (0, _createElement.createElement)("a", [
     document.createTextNode("tel: +123456789")
 ], {
     cssClass: [
         "footer__phone"
-    ]
+    ],
+    attrs: {
+        href: "tel:+1234567890"
+    }
 });
 const contactsElement = (0, _createElement.createElement)("div", [
     phoneElement,
@@ -1060,6 +1067,9 @@ async function addToCart(event) {
 const productCardsContainer = document.querySelector(".main__product-cards");
 productCardsContainer.addEventListener("click", addToCart);
 
-},{}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
+},{}],"dgms5":[function(require,module,exports) {
+var _createElement = require("./createElement");
+
+},{"./createElement":"hqWTp"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
 
 //# sourceMappingURL=index.975ef6c8.js.map

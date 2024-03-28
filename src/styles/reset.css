@@ -29,3 +29,8 @@ h3 {
   font-style: inherit;
   font-weight: inherit;
 }
+
+input::placeholder,
+textarea::placeholder {
+  color: rgb(0, 79, 68);
+}

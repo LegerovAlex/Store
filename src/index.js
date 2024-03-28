@@ -4,3 +4,4 @@ import "./cards";
 import "./footer";
 import "./search";
 import "./addInCart";
+import "./cart";

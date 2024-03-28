@@ -2,18 +2,24 @@ import { createElement } from "./createElement";
 import { render } from "./render";
 
 const emailElement = createElement(
-  "div",
+  "a",
   [document.createTextNode("email: example@example.com")],
   {
     cssClass: ["footer__email"],
+    attrs: {
+      href: "example@example.com",
+    },
   }
 );
 
 const phoneElement = createElement(
-  "div",
+  "a",
   [document.createTextNode("tel: +123456789")],
   {
     cssClass: ["footer__phone"],
+    attrs: {
+      href: "tel:+1234567890",
+    },
   }
 );
 

@@ -26,4 +26,8 @@ h1, h2, h3 {
   margin: 0;
   padding: 0;
 }
+
+input::placeholder, textarea::placeholder {
+  color: #004f44;
+}
 /*# sourceMappingURL=index.4851a641.css.map */
