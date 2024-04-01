@@ -5,3 +5,5 @@ import "./footer";
 import "./search";
 import "./addInCart";
 import "./cart";
+import "./сartFunctions";
+import "./preloader";

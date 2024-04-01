@@ -1,5 +1,6 @@
 import { createElement } from "./createElement";
 import { render } from "./render";
+import { preloader } from "./preloader";
 import cart from "./assets/icons/cart.svg";
 
 const cardsElement = createElement("div", [], {
@@ -13,7 +14,7 @@ const cartImgElement = createElement("img", [], {
   },
 });
 
-const cartElement = createElement("button", [cartImgElement], {
+export const cartElement = createElement("button", [cartImgElement], {
   cssClass: ["main-cart"],
 });
 
@@ -33,7 +34,15 @@ const inputElement = createElement("input", [], {
   },
 });
 
-export const searchElement = createElement("div", [inputElement], {
+export const notFoundMessageElement = createElement(
+  "div",
+  [document.createTextNode("The product was not found")],
+  {
+    cssClass: ["not-found-message"],
+  }
+);
+
+export const searchElement = createElement("div", [inputElement, preloader], {
   cssClass: ["main-search"],
 });
 

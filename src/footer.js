@@ -12,7 +12,7 @@ const emailElement = createElement(
   }
 );
 
-const phoneElement = createElement(
+export const phoneElement = createElement(
   "a",
   [document.createTextNode("tel: +123456789")],
   {

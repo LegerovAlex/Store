@@ -591,8 +591,10 @@ var _footer = require("./footer");
 var _search = require("./search");
 var _addInCart = require("./addInCart");
 var _cart = require("./cart");
+var _\u0441artFunctions = require("./\u0441artFunctions");
+var _preloader = require("./preloader");
 
-},{"./header":"ef18b","./main":"gLLPy","./cards":"wDC3l","./footer":"2nDgU","./search":"8gVq6","./addInCart":"iw19V","./cart":"dgms5"}],"ef18b":[function(require,module,exports) {
+},{"./header":"ef18b","./main":"gLLPy","./cards":"wDC3l","./footer":"2nDgU","./search":"8gVq6","./addInCart":"iw19V","./cart":"dgms5","./сartFunctions":"64FHM","./preloader":"4lTCx"}],"ef18b":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _createElement = require("./createElement");
 var _render = require("./render");
@@ -784,9 +786,12 @@ module.exports = require("a3ea5ad87d243bbc").getBundleURL("bLxZJ") + "slider.5bb
 },{"a3ea5ad87d243bbc":"lgJ39"}],"gLLPy":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "cartElement", ()=>cartElement);
+parcelHelpers.export(exports, "notFoundMessageElement", ()=>notFoundMessageElement);
 parcelHelpers.export(exports, "searchElement", ()=>searchElement);
 var _createElement = require("./createElement");
 var _render = require("./render");
+var _preloader = require("./preloader");
 var _cartSvg = require("./assets/icons/cart.svg");
 var _cartSvgDefault = parcelHelpers.interopDefault(_cartSvg);
 const cardsElement = (0, _createElement.createElement)("div", [], {
@@ -825,8 +830,16 @@ const inputElement = (0, _createElement.createElement)("input", [], {
         placeholder: "Search..."
     }
 });
+const notFoundMessageElement = (0, _createElement.createElement)("div", [
+    document.createTextNode("The product was not found")
+], {
+    cssClass: [
+        "not-found-message"
+    ]
+});
 const searchElement = (0, _createElement.createElement)("div", [
-    inputElement
+    inputElement,
+    (0, _preloader.preloader)
 ], {
     cssClass: [
         "main-search"
@@ -859,10 +872,23 @@ const mainElement = (0, _createElement.createElement)("div", [
 });
 (0, _render.render)(mainElement, "#root");
 
-},{"./createElement":"hqWTp","./render":"lPFSt","./assets/icons/cart.svg":"32ua5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"32ua5":[function(require,module,exports) {
+},{"./createElement":"hqWTp","./render":"lPFSt","./assets/icons/cart.svg":"32ua5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./preloader":"4lTCx"}],"32ua5":[function(require,module,exports) {
 module.exports = require("43c20018c1755142").getBundleURL("bLxZJ") + "cart.323bed84.svg" + "?" + Date.now();
 
-},{"43c20018c1755142":"lgJ39"}],"wDC3l":[function(require,module,exports) {
+},{"43c20018c1755142":"lgJ39"}],"4lTCx":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "preloader", ()=>preloader);
+var _createElement = require("./createElement");
+const preloader = (0, _createElement.createElement)("div", [
+    document.createTextNode("Loading...")
+], {
+    cssClass: [
+        "preloader"
+    ]
+});
+
+},{"./createElement":"hqWTp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"wDC3l":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createCard", ()=>createCard);
@@ -931,18 +957,24 @@ const createCard = ({ id, title, priceLast, img })=>{
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getDate", ()=>getDate);
+var _preloader = require("./preloader");
 async function getDate() {
+    (0, _preloader.preloader).classList.add("preloader--active");
     try {
         const responce = await fetch("https://634c0fbd317dc96a30907dcb.mockapi.io/CARDS");
         if (!responce.ok) throw new Error("WhoOps");
         const data = await responce.json();
+        (0, _preloader.preloader).classList.remove("preloader--active");
         return data;
     } catch (error) {
         console.log("Something wrong", error);
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2nDgU":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./preloader":"4lTCx"}],"2nDgU":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "phoneElement", ()=>phoneElement);
 var _createElement = require("./createElement");
 var _render = require("./render");
 const emailElement = (0, _createElement.createElement)("a", [
@@ -1006,19 +1038,24 @@ const footerElement = (0, _createElement.createElement)("div", [
 });
 (0, _render.render)(footerElement, "#root");
 
-},{"./createElement":"hqWTp","./render":"lPFSt"}],"8gVq6":[function(require,module,exports) {
+},{"./createElement":"hqWTp","./render":"lPFSt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8gVq6":[function(require,module,exports) {
 var _cards = require("./cards");
 var _render = require("./render");
 var _main = require("./main");
 var _debounce = require("./debounce");
+var _preloader = require("./preloader");
 (0, _main.searchElement).addEventListener("input", (0, _debounce.debounce)(searchItems, 500));
 async function searchItems(event) {
     const searchText = event.target.value.trim().toLowerCase();
     const productContainer = document.querySelector(".main__product-cards");
     productContainer.innerHTML = "";
+    (0, _preloader.preloader).classList.add("preloader--active");
     try {
         const response = await fetch(`https://634c0fbd317dc96a30907dcb.mockapi.io/CARDS?search=${searchText}`);
-        if (!response.ok) throw new Error("No products found with this name");
+        if (!response.ok) {
+            (0, _render.render)((0, _main.notFoundMessageElement), ".main__product-cards");
+            throw new Error("No products found with this name");
+        }
         const data = await response.json();
         data.map((productData)=>{
             const productCard = (0, _cards.createCard)(productData);
@@ -1027,9 +1064,10 @@ async function searchItems(event) {
     } catch (error) {
         console.log("Error while executing the request:", error);
     }
+    (0, _preloader.preloader).classList.remove("preloader--active");
 }
 
-},{"./cards":"wDC3l","./render":"lPFSt","./main":"gLLPy","./debounce":"b4lyE"}],"b4lyE":[function(require,module,exports) {
+},{"./cards":"wDC3l","./render":"lPFSt","./main":"gLLPy","./debounce":"b4lyE","./preloader":"4lTCx"}],"b4lyE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "debounce", ()=>debounce);
@@ -1068,8 +1106,168 @@ const productCardsContainer = document.querySelector(".main__product-cards");
 productCardsContainer.addEventListener("click", addToCart);
 
 },{}],"dgms5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "modalButtonOrderElement", ()=>modalButtonOrderElement);
+parcelHelpers.export(exports, "cartAmountElement", ()=>cartAmountElement);
+parcelHelpers.export(exports, "modalContentElement", ()=>modalContentElement);
+parcelHelpers.export(exports, "modalButtonElement", ()=>modalButtonElement);
+parcelHelpers.export(exports, "modalElement", ()=>modalElement);
 var _createElement = require("./createElement");
+var _render = require("./render");
+const modalButtonOrderElement = (0, _createElement.createElement)("div", [
+    document.createTextNode("Remove all")
+], {
+    cssClass: [
+        "order-button"
+    ]
+});
+const cartAmountElement = (0, _createElement.createElement)("div", [], {
+    cssClass: [
+        "cart-total__amount"
+    ]
+});
+const cartLabelElement = (0, _createElement.createElement)("div", [
+    document.createTextNode("Amount:")
+], {
+    cssClass: [
+        "cart-total__label"
+    ]
+});
+const cartTotalElement = (0, _createElement.createElement)("div", [
+    cartLabelElement,
+    cartAmountElement
+], {
+    cssClass: [
+        "cart-total"
+    ]
+});
+const modalFotterElement = (0, _createElement.createElement)("div", [
+    cartTotalElement,
+    modalButtonOrderElement
+], {
+    cssClass: [
+        "modal__footer"
+    ]
+});
+const modalContentElement = (0, _createElement.createElement)("div", [], {
+    cssClass: [
+        "modal__content"
+    ]
+});
+const modalButtonElement = (0, _createElement.createElement)("button", [
+    document.createTextNode("X")
+], {
+    cssClass: [
+        "modal__close"
+    ]
+});
+const modalTitleElement = (0, _createElement.createElement)("h2", [
+    document.createTextNode("Cart")
+], {
+    cssClass: [
+        "modal__title"
+    ]
+});
+const modalHeaderElement = (0, _createElement.createElement)("div", [
+    modalTitleElement,
+    modalButtonElement
+], {
+    cssClass: [
+        "modal__header"
+    ]
+});
+const modalInnerElement = (0, _createElement.createElement)("div", [
+    modalHeaderElement,
+    modalContentElement,
+    modalFotterElement
+], {
+    cssClass: [
+        "modal__inner"
+    ]
+});
+const modalElement = (0, _createElement.createElement)("div", [
+    modalInnerElement
+], {
+    cssClass: [
+        "modal"
+    ]
+});
+(0, _render.render)(modalElement, ".main");
 
-},{"./createElement":"hqWTp"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
+},{"./createElement":"hqWTp","./render":"lPFSt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"64FHM":[function(require,module,exports) {
+var _main = require("./main");
+var _cart = require("./cart");
+var _createElement = require("./createElement");
+var _render = require("./render");
+(0, _cart.modalButtonOrderElement).addEventListener("click", ()=>{
+    (0, _cart.modalContentElement).innerHTML = "";
+    localStorage.clear();
+    retrieveCartData();
+    calcAmountPrice();
+});
+(0, _main.cartElement).addEventListener("click", ()=>{
+    (0, _cart.modalElement).classList.add("modal--active");
+});
+(0, _cart.modalButtonElement).addEventListener("click", ()=>{
+    (0, _cart.modalElement).classList.remove("modal--active");
+});
+(0, _cart.modalElement).addEventListener("click", (event)=>{
+    if (event.target === (0, _cart.modalElement)) (0, _cart.modalElement).classList.remove("modal--active");
+});
+(0, _main.cartElement).addEventListener("click", retrieveCartData);
+const createCartItems = ({ id, title, priceLast })=>{
+    const itemPriceElement = (0, _createElement.createElement)("div", [
+        document.createTextNode(`${priceLast} $`)
+    ], {
+        cssClass: [
+            "cart-item__price"
+        ]
+    });
+    const itemNameElement = (0, _createElement.createElement)("div", [
+        document.createTextNode(title)
+    ], {
+        cssClass: [
+            "cart-item__name"
+        ]
+    });
+    const cartElement = (0, _createElement.createElement)("div", [
+        itemNameElement,
+        itemPriceElement
+    ], {
+        cssClass: [
+            "cart-item"
+        ],
+        attrs: {
+            id: Number(id)
+        }
+    });
+    return cartElement;
+};
+function retrieveCartData() {
+    const keys = Object.keys(localStorage);
+    if (keys.length == 0) (0, _cart.modalContentElement).innerHTML = "Cart is empty...";
+    else {
+        (0, _cart.modalContentElement).innerHTML = "";
+        keys.forEach((key)=>{
+            const productInfo = localStorage.getItem(key);
+            const productData = JSON.parse(productInfo);
+            const cartItems = createCartItems(productData);
+            (0, _render.render)(cartItems, ".modal__content");
+        });
+        calcAmountPrice();
+    }
+}
+function calcAmountPrice() {
+    const cartItems = document.querySelectorAll(".cart-item__price");
+    let totalPrice = 0;
+    cartItems.forEach((price)=>{
+        totalPrice += parseFloat(price.textContent);
+    });
+    const cartAmountElement = document.querySelector(".cart-total__amount");
+    cartAmountElement.textContent = totalPrice + " $";
+}
+
+},{"./main":"gLLPy","./cart":"dgms5","./createElement":"hqWTp","./render":"lPFSt"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
 
 //# sourceMappingURL=index.975ef6c8.js.map
