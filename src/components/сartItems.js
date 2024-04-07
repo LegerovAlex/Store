@@ -1,18 +1,19 @@
-import { cartElement } from "./main";
+import { cartElement, cartNotificationElement } from "./main";
 import {
   modalButtonElement,
   modalElement,
   modalContentElement,
   modalButtonOrderElement,
 } from "./cart";
-import { createElement } from "./createElement";
-import { render } from "./render";
+import { createElement } from "../utils/createElement";
+import { render } from "../utils/render";
 
 modalButtonOrderElement.addEventListener("click", () => {
   modalContentElement.innerHTML = "";
   localStorage.clear();
   retrieveCartData();
   calcAmountPrice();
+  updateCartNotification();
 });
 
 cartElement.addEventListener("click", () => {
@@ -86,4 +87,12 @@ function calcAmountPrice() {
   });
   const cartAmountElement = document.querySelector(".cart-total__amount");
   cartAmountElement.textContent = totalPrice + " $";
+}
+
+export function updateCartNotification() {
+  if (localStorage.length > 0) {
+    cartNotificationElement.classList.add("notification-circle--active");
+  } else {
+    cartNotificationElement.classList.remove("notification-circle--active");
+  }
 }

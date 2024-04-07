@@ -1,6 +1,6 @@
-import { getDate } from "./store";
-import { createElement } from "./createElement";
-import { render } from "./render";
+import { getDate } from "../utils/store";
+import { createElement } from "../utils/createElement";
+import { render } from "../utils/render";
 
 export const createCard = ({ id, title, priceLast, img }) => {
   const cardButtonElement = createElement(

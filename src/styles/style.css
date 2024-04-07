@@ -33,13 +33,7 @@
   flex-wrap: wrap;
   gap: 40px;
   justify-content: center;
-}
-
-.header-content__description {
-  max-width: 420px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  max-width: 450px;
 }
 
 .header-content__title {
@@ -48,6 +42,7 @@
   font-weight: 500;
   line-height: 72px;
   letter-spacing: 1.5px;
+  text-align: center;
 }
 .header-content__subtitle {
   color: rgb(239, 247, 245);
@@ -55,6 +50,7 @@
   font-weight: 400;
   line-height: 28px;
   letter-spacing: 0.3px;
+  text-align: center;
 }
 
 .header-content__slider-img {
@@ -123,6 +119,22 @@
   background-color: rgb(0, 79, 68);
   padding: 10px;
   border-radius: 50px;
+  position: relative;
+}
+
+.notification-circle {
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 5px;
+  right: 19px;
+  display: none;
+}
+
+.notification-circle--active {
+  display: block;
 }
 
 .not-found-message {

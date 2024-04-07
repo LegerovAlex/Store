@@ -1,4 +1,5 @@
-import { preloader } from "./preloader";
+import { preloader } from "../components/preloader";
+import { updateCartNotification } from "../components/сartItems";
 
 export async function getDate() {
   preloader.classList.add("preloader--active");
@@ -12,6 +13,7 @@ export async function getDate() {
 
     const data = await responce.json();
     preloader.classList.remove("preloader--active");
+    updateCartNotification();
     return data;
   } catch (error) {
     console.log("Something wrong", error);

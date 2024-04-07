@@ -1,9 +1,9 @@
-import { createCard } from "./cards";
+import { createCard } from "../components/cards";
 import { render } from "./render";
-import { searchElement } from "./main";
+import { searchElement } from "../components/main";
 import { debounce } from "./debounce";
-import { preloader } from "./preloader";
-import { notFoundMessageElement } from "./main";
+import { preloader } from "../components/preloader";
+import { notFoundMessageElement } from "../components/main";
 
 searchElement.addEventListener("input", debounce(searchItems, 500));
 

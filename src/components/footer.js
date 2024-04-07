@@ -1,5 +1,5 @@
-import { createElement } from "./createElement";
-import { render } from "./render";
+import { createElement } from "../utils/createElement";
+import { render } from "../utils/render";
 
 const emailElement = createElement(
   "a",

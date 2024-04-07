@@ -1,10 +1,14 @@
-import { createElement } from "./createElement";
-import { render } from "./render";
+import { createElement } from "../utils/createElement";
+import { render } from "../utils/render";
 import { preloader } from "./preloader";
-import cart from "./assets/icons/cart.svg";
+import cart from "../assets/icons/cart.svg";
 
 const cardsElement = createElement("div", [], {
   cssClass: ["main__product-cards"],
+});
+
+export const cartNotificationElement = createElement("div", [], {
+  cssClass: ["notification-circle"],
 });
 
 const cartImgElement = createElement("img", [], {
@@ -14,9 +18,13 @@ const cartImgElement = createElement("img", [], {
   },
 });
 
-export const cartElement = createElement("button", [cartImgElement], {
-  cssClass: ["main-cart"],
-});
+export const cartElement = createElement(
+  "button",
+  [cartImgElement, cartNotificationElement],
+  {
+    cssClass: ["main-cart"],
+  }
+);
 
 const titleElement = createElement(
   "h2",

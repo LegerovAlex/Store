@@ -1,7 +1,6 @@
-import { createElement } from "./createElement";
-import { render } from "./render";
-import logo from "./assets/icons/logo.svg";
-import slider from "./assets/images/slider.jpeg";
+import { createElement } from "../utils/createElement";
+import { render } from "../utils/render";
+import logo from "../assets/icons/logo.svg";
 
 const subTitileElement = createElement(
   "p",
@@ -23,22 +22,7 @@ const titleElement = createElement(
   }
 );
 
-const sliderImgElement = createElement("img", [], {
-  attrs: {
-    src: slider,
-  },
-  cssClass: ["header-content__slider-img"],
-});
-
-const sliderElement = createElement("div", [sliderImgElement], {
-  cssClass: ["header-content__slider"],
-});
-
-const descElement = createElement("div", [titleElement, subTitileElement], {
-  cssClass: ["header-content__description"],
-});
-
-const contentElement = createElement("div", [descElement, sliderElement], {
+const contentElement = createElement("div", [titleElement, subTitileElement], {
   cssClass: ["header-content"],
 });
 

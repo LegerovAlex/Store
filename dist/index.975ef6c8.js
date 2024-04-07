@@ -584,24 +584,22 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"8lqZg":[function(require,module,exports) {
-var _header = require("./header");
-var _main = require("./main");
-var _cards = require("./cards");
-var _footer = require("./footer");
-var _search = require("./search");
-var _addInCart = require("./addInCart");
-var _cart = require("./cart");
-var _\u0441artFunctions = require("./\u0441artFunctions");
-var _preloader = require("./preloader");
+var _header = require("./components/header");
+var _main = require("./components/main");
+var _cards = require("./components/cards");
+var _footer = require("./components/footer");
+var _search = require("./utils/search");
+var _addInCart = require("./utils/addInCart");
+var _cart = require("./components/cart");
+var _\u0441artItems = require("./components/\u0441artItems");
+var _preloader = require("./components/preloader");
 
-},{"./header":"ef18b","./main":"gLLPy","./cards":"wDC3l","./footer":"2nDgU","./search":"8gVq6","./addInCart":"iw19V","./cart":"dgms5","./сartFunctions":"64FHM","./preloader":"4lTCx"}],"ef18b":[function(require,module,exports) {
+},{"./components/header":"aorvA","./components/main":"lDxZi","./components/cards":"kZUEy","./components/footer":"bjsug","./components/cart":"97YSD","./components/preloader":"bRV95","./utils/search":"gWZJw","./utils/addInCart":"kkC9i","./components/сartItems":"hrp3s"}],"aorvA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _createElement = require("./createElement");
-var _render = require("./render");
-var _logoSvg = require("./assets/icons/logo.svg");
+var _createElement = require("../utils/createElement");
+var _render = require("../utils/render");
+var _logoSvg = require("../assets/icons/logo.svg");
 var _logoSvgDefault = parcelHelpers.interopDefault(_logoSvg);
-var _sliderJpeg = require("./assets/images/slider.jpeg");
-var _sliderJpegDefault = parcelHelpers.interopDefault(_sliderJpeg);
 const subTitileElement = (0, _createElement.createElement)("p", [
     document.createTextNode("Our environment, the world in which we live and work, is a mirror of our attitudes and expectations")
 ], {
@@ -616,32 +614,9 @@ const titleElement = (0, _createElement.createElement)("h1", [
         "header-content__title"
     ]
 });
-const sliderImgElement = (0, _createElement.createElement)("img", [], {
-    attrs: {
-        src: (0, _sliderJpegDefault.default)
-    },
-    cssClass: [
-        "header-content__slider-img"
-    ]
-});
-const sliderElement = (0, _createElement.createElement)("div", [
-    sliderImgElement
-], {
-    cssClass: [
-        "header-content__slider"
-    ]
-});
-const descElement = (0, _createElement.createElement)("div", [
+const contentElement = (0, _createElement.createElement)("div", [
     titleElement,
     subTitileElement
-], {
-    cssClass: [
-        "header-content__description"
-    ]
-});
-const contentElement = (0, _createElement.createElement)("div", [
-    descElement,
-    sliderElement
 ], {
     cssClass: [
         "header-content"
@@ -687,7 +662,7 @@ const headerElement = (0, _createElement.createElement)("div", [
 });
 (0, _render.render)(headerElement, "#root");
 
-},{"./createElement":"hqWTp","./render":"lPFSt","./assets/icons/logo.svg":"gtEwr","./assets/images/slider.jpeg":"ffQd5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hqWTp":[function(require,module,exports) {
+},{"../utils/createElement":"c7i4C","../utils/render":"d8Qkz","../assets/icons/logo.svg":"gtEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c7i4C":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createElement", ()=>createElement);
@@ -733,7 +708,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"lPFSt":[function(require,module,exports) {
+},{}],"d8Qkz":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
@@ -780,23 +755,26 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"ffQd5":[function(require,module,exports) {
-module.exports = require("a3ea5ad87d243bbc").getBundleURL("bLxZJ") + "slider.5bbae520.jpeg" + "?" + Date.now();
-
-},{"a3ea5ad87d243bbc":"lgJ39"}],"gLLPy":[function(require,module,exports) {
+},{}],"lDxZi":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "cartNotificationElement", ()=>cartNotificationElement);
 parcelHelpers.export(exports, "cartElement", ()=>cartElement);
 parcelHelpers.export(exports, "notFoundMessageElement", ()=>notFoundMessageElement);
 parcelHelpers.export(exports, "searchElement", ()=>searchElement);
-var _createElement = require("./createElement");
-var _render = require("./render");
+var _createElement = require("../utils/createElement");
+var _render = require("../utils/render");
 var _preloader = require("./preloader");
-var _cartSvg = require("./assets/icons/cart.svg");
+var _cartSvg = require("../assets/icons/cart.svg");
 var _cartSvgDefault = parcelHelpers.interopDefault(_cartSvg);
 const cardsElement = (0, _createElement.createElement)("div", [], {
     cssClass: [
         "main__product-cards"
+    ]
+});
+const cartNotificationElement = (0, _createElement.createElement)("div", [], {
+    cssClass: [
+        "notification-circle"
     ]
 });
 const cartImgElement = (0, _createElement.createElement)("img", [], {
@@ -808,7 +786,8 @@ const cartImgElement = (0, _createElement.createElement)("img", [], {
     }
 });
 const cartElement = (0, _createElement.createElement)("button", [
-    cartImgElement
+    cartImgElement,
+    cartNotificationElement
 ], {
     cssClass: [
         "main-cart"
@@ -872,14 +851,11 @@ const mainElement = (0, _createElement.createElement)("div", [
 });
 (0, _render.render)(mainElement, "#root");
 
-},{"./createElement":"hqWTp","./render":"lPFSt","./assets/icons/cart.svg":"32ua5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./preloader":"4lTCx"}],"32ua5":[function(require,module,exports) {
-module.exports = require("43c20018c1755142").getBundleURL("bLxZJ") + "cart.323bed84.svg" + "?" + Date.now();
-
-},{"43c20018c1755142":"lgJ39"}],"4lTCx":[function(require,module,exports) {
+},{"../utils/createElement":"c7i4C","../utils/render":"d8Qkz","./preloader":"bRV95","../assets/icons/cart.svg":"32ua5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bRV95":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "preloader", ()=>preloader);
-var _createElement = require("./createElement");
+var _createElement = require("../utils/createElement");
 const preloader = (0, _createElement.createElement)("div", [
     document.createTextNode("Loading...")
 ], {
@@ -888,13 +864,16 @@ const preloader = (0, _createElement.createElement)("div", [
     ]
 });
 
-},{"./createElement":"hqWTp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"wDC3l":[function(require,module,exports) {
+},{"../utils/createElement":"c7i4C","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"32ua5":[function(require,module,exports) {
+module.exports = require("43c20018c1755142").getBundleURL("bLxZJ") + "cart.323bed84.svg" + "?" + Date.now();
+
+},{"43c20018c1755142":"lgJ39"}],"kZUEy":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createCard", ()=>createCard);
-var _store = require("./store");
-var _createElement = require("./createElement");
-var _render = require("./render");
+var _store = require("../utils/store");
+var _createElement = require("../utils/createElement");
+var _render = require("../utils/render");
 const createCard = ({ id, title, priceLast, img })=>{
     const cardButtonElement = (0, _createElement.createElement)("button", [
         document.createTextNode("BUY")
@@ -953,11 +932,12 @@ const createCard = ({ id, title, priceLast, img })=>{
     console.error("An error occurred while fetching the data:", error);
 });
 
-},{"./store":"d8qyu","./createElement":"hqWTp","./render":"lPFSt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d8qyu":[function(require,module,exports) {
+},{"../utils/store":"k2jPV","../utils/createElement":"c7i4C","../utils/render":"d8Qkz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"k2jPV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getDate", ()=>getDate);
-var _preloader = require("./preloader");
+var _preloader = require("../components/preloader");
+var _\u0441artItems = require("../components/\u0441artItems");
 async function getDate() {
     (0, _preloader.preloader).classList.add("preloader--active");
     try {
@@ -965,147 +945,95 @@ async function getDate() {
         if (!responce.ok) throw new Error("WhoOps");
         const data = await responce.json();
         (0, _preloader.preloader).classList.remove("preloader--active");
+        (0, _\u0441artItems.updateCartNotification)();
         return data;
     } catch (error) {
         console.log("Something wrong", error);
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./preloader":"4lTCx"}],"2nDgU":[function(require,module,exports) {
+},{"../components/preloader":"bRV95","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/сartItems":"hrp3s"}],"hrp3s":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "phoneElement", ()=>phoneElement);
-var _createElement = require("./createElement");
-var _render = require("./render");
-const emailElement = (0, _createElement.createElement)("a", [
-    document.createTextNode("email: example@example.com")
-], {
-    cssClass: [
-        "footer__email"
-    ],
-    attrs: {
-        href: "example@example.com"
-    }
-});
-const phoneElement = (0, _createElement.createElement)("a", [
-    document.createTextNode("tel: +123456789")
-], {
-    cssClass: [
-        "footer__phone"
-    ],
-    attrs: {
-        href: "tel:+1234567890"
-    }
-});
-const contactsElement = (0, _createElement.createElement)("div", [
-    phoneElement,
-    emailElement
-], {
-    cssClass: [
-        "footer__contacts"
-    ]
-});
-const textElement = (0, _createElement.createElement)("p", [
-    document.createTextNode("*only for the same region")
-], {
-    cssClass: [
-        "footer__text"
-    ]
-});
-const titleElement = (0, _createElement.createElement)("h2", [
-    document.createTextNode("Free Shipping Services")
-], {
-    cssClass: [
-        "footer__title"
-    ]
-});
-const containerElement = (0, _createElement.createElement)("div", [
-    titleElement,
-    textElement,
-    contactsElement
-], {
-    cssClass: [
-        "container",
-        "footer-container"
-    ]
-});
-const footerElement = (0, _createElement.createElement)("div", [
-    containerElement
-], {
-    cssClass: [
-        "footer"
-    ]
-});
-(0, _render.render)(footerElement, "#root");
-
-},{"./createElement":"hqWTp","./render":"lPFSt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8gVq6":[function(require,module,exports) {
-var _cards = require("./cards");
-var _render = require("./render");
+parcelHelpers.export(exports, "updateCartNotification", ()=>updateCartNotification);
 var _main = require("./main");
-var _debounce = require("./debounce");
-var _preloader = require("./preloader");
-(0, _main.searchElement).addEventListener("input", (0, _debounce.debounce)(searchItems, 500));
-async function searchItems(event) {
-    const searchText = event.target.value.trim().toLowerCase();
-    const productContainer = document.querySelector(".main__product-cards");
-    productContainer.innerHTML = "";
-    (0, _preloader.preloader).classList.add("preloader--active");
-    try {
-        const response = await fetch(`https://634c0fbd317dc96a30907dcb.mockapi.io/CARDS?search=${searchText}`);
-        if (!response.ok) {
-            (0, _render.render)((0, _main.notFoundMessageElement), ".main__product-cards");
-            throw new Error("No products found with this name");
+var _cart = require("./cart");
+var _createElement = require("../utils/createElement");
+var _render = require("../utils/render");
+(0, _cart.modalButtonOrderElement).addEventListener("click", ()=>{
+    (0, _cart.modalContentElement).innerHTML = "";
+    localStorage.clear();
+    retrieveCartData();
+    calcAmountPrice();
+    updateCartNotification();
+});
+(0, _main.cartElement).addEventListener("click", ()=>{
+    (0, _cart.modalElement).classList.add("modal--active");
+});
+(0, _cart.modalButtonElement).addEventListener("click", ()=>{
+    (0, _cart.modalElement).classList.remove("modal--active");
+});
+(0, _cart.modalElement).addEventListener("click", (event)=>{
+    if (event.target === (0, _cart.modalElement)) (0, _cart.modalElement).classList.remove("modal--active");
+});
+(0, _main.cartElement).addEventListener("click", retrieveCartData);
+const createCartItems = ({ id, title, priceLast })=>{
+    const itemPriceElement = (0, _createElement.createElement)("div", [
+        document.createTextNode(`${priceLast} $`)
+    ], {
+        cssClass: [
+            "cart-item__price"
+        ]
+    });
+    const itemNameElement = (0, _createElement.createElement)("div", [
+        document.createTextNode(title)
+    ], {
+        cssClass: [
+            "cart-item__name"
+        ]
+    });
+    const cartElement = (0, _createElement.createElement)("div", [
+        itemNameElement,
+        itemPriceElement
+    ], {
+        cssClass: [
+            "cart-item"
+        ],
+        attrs: {
+            id: Number(id)
         }
-        const data = await response.json();
-        data.map((productData)=>{
-            const productCard = (0, _cards.createCard)(productData);
-            (0, _render.render)(productCard, ".main__product-cards");
+    });
+    return cartElement;
+};
+function retrieveCartData() {
+    const keys = Object.keys(localStorage);
+    if (keys.length == 0) (0, _cart.modalContentElement).innerHTML = "Cart is empty...";
+    else {
+        (0, _cart.modalContentElement).innerHTML = "";
+        keys.forEach((key)=>{
+            const productInfo = localStorage.getItem(key);
+            const productData = JSON.parse(productInfo);
+            const cartItems = createCartItems(productData);
+            (0, _render.render)(cartItems, ".modal__content");
         });
-    } catch (error) {
-        console.log("Error while executing the request:", error);
-    }
-    (0, _preloader.preloader).classList.remove("preloader--active");
-}
-
-},{"./cards":"wDC3l","./render":"lPFSt","./main":"gLLPy","./debounce":"b4lyE","./preloader":"4lTCx"}],"b4lyE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "debounce", ()=>debounce);
-function debounce(func, delay) {
-    let timeroutId;
-    return function executedFunction(...args) {
-        clearTimeout(timeroutId);
-        timeroutId = setTimeout(()=>{
-            func.apply(this, args);
-        }, delay);
-    };
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iw19V":[function(require,module,exports) {
-async function addToCart(event) {
-    if (event.target.closest(".product-card__button")) {
-        event.preventDefault();
-        const buttonId = event.target.getAttribute("id");
-        try {
-            const responce = await fetch(`https://634c0fbd317dc96a30907dcb.mockapi.io/CARDS/${buttonId}`);
-            if (!responce.ok) throw new Error("Whoops");
-            const productData = await responce.json();
-            const uniqueKey = `${buttonId}_${Date.now()}`;
-            const productInfo = JSON.stringify({
-                id: productData.id,
-                title: productData.title,
-                priceLast: productData.priceLast
-            });
-            localStorage.setItem(uniqueKey, productInfo);
-        } catch (error) {
-            console.log("Error while fetching product data:", error);
-        }
+        calcAmountPrice();
     }
 }
-const productCardsContainer = document.querySelector(".main__product-cards");
-productCardsContainer.addEventListener("click", addToCart);
+function calcAmountPrice() {
+    const cartItems = document.querySelectorAll(".cart-item__price");
+    let totalPrice = 0;
+    cartItems.forEach((price)=>{
+        totalPrice += parseFloat(price.textContent);
+    });
+    const cartAmountElement = document.querySelector(".cart-total__amount");
+    cartAmountElement.textContent = totalPrice + " $";
+}
+function updateCartNotification() {
+    if (localStorage.length > 0) (0, _main.cartNotificationElement).classList.add("notification-circle--active");
+    else (0, _main.cartNotificationElement).classList.remove("notification-circle--active");
+}
 
-},{}],"dgms5":[function(require,module,exports) {
+},{"./main":"lDxZi","./cart":"97YSD","../utils/createElement":"c7i4C","../utils/render":"d8Qkz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"97YSD":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "modalButtonOrderElement", ()=>modalButtonOrderElement);
@@ -1113,8 +1041,8 @@ parcelHelpers.export(exports, "cartAmountElement", ()=>cartAmountElement);
 parcelHelpers.export(exports, "modalContentElement", ()=>modalContentElement);
 parcelHelpers.export(exports, "modalButtonElement", ()=>modalButtonElement);
 parcelHelpers.export(exports, "modalElement", ()=>modalElement);
-var _createElement = require("./createElement");
-var _render = require("./render");
+var _createElement = require("../utils/createElement");
+var _render = require("../utils/render");
 const modalButtonOrderElement = (0, _createElement.createElement)("div", [
     document.createTextNode("Remove all")
 ], {
@@ -1122,7 +1050,9 @@ const modalButtonOrderElement = (0, _createElement.createElement)("div", [
         "order-button"
     ]
 });
-const cartAmountElement = (0, _createElement.createElement)("div", [], {
+const cartAmountElement = (0, _createElement.createElement)("div", [
+    document.createTextNode("0 $")
+], {
     cssClass: [
         "cart-total__amount"
     ]
@@ -1195,79 +1125,142 @@ const modalElement = (0, _createElement.createElement)("div", [
 });
 (0, _render.render)(modalElement, ".main");
 
-},{"./createElement":"hqWTp","./render":"lPFSt","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"64FHM":[function(require,module,exports) {
-var _main = require("./main");
-var _cart = require("./cart");
-var _createElement = require("./createElement");
-var _render = require("./render");
-(0, _cart.modalButtonOrderElement).addEventListener("click", ()=>{
-    (0, _cart.modalContentElement).innerHTML = "";
-    localStorage.clear();
-    retrieveCartData();
-    calcAmountPrice();
-});
-(0, _main.cartElement).addEventListener("click", ()=>{
-    (0, _cart.modalElement).classList.add("modal--active");
-});
-(0, _cart.modalButtonElement).addEventListener("click", ()=>{
-    (0, _cart.modalElement).classList.remove("modal--active");
-});
-(0, _cart.modalElement).addEventListener("click", (event)=>{
-    if (event.target === (0, _cart.modalElement)) (0, _cart.modalElement).classList.remove("modal--active");
-});
-(0, _main.cartElement).addEventListener("click", retrieveCartData);
-const createCartItems = ({ id, title, priceLast })=>{
-    const itemPriceElement = (0, _createElement.createElement)("div", [
-        document.createTextNode(`${priceLast} $`)
-    ], {
-        cssClass: [
-            "cart-item__price"
-        ]
-    });
-    const itemNameElement = (0, _createElement.createElement)("div", [
-        document.createTextNode(title)
-    ], {
-        cssClass: [
-            "cart-item__name"
-        ]
-    });
-    const cartElement = (0, _createElement.createElement)("div", [
-        itemNameElement,
-        itemPriceElement
-    ], {
-        cssClass: [
-            "cart-item"
-        ],
-        attrs: {
-            id: Number(id)
-        }
-    });
-    return cartElement;
-};
-function retrieveCartData() {
-    const keys = Object.keys(localStorage);
-    if (keys.length == 0) (0, _cart.modalContentElement).innerHTML = "Cart is empty...";
-    else {
-        (0, _cart.modalContentElement).innerHTML = "";
-        keys.forEach((key)=>{
-            const productInfo = localStorage.getItem(key);
-            const productData = JSON.parse(productInfo);
-            const cartItems = createCartItems(productData);
-            (0, _render.render)(cartItems, ".modal__content");
-        });
-        calcAmountPrice();
+},{"../utils/createElement":"c7i4C","../utils/render":"d8Qkz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bjsug":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "phoneElement", ()=>phoneElement);
+var _createElement = require("../utils/createElement");
+var _render = require("../utils/render");
+const emailElement = (0, _createElement.createElement)("a", [
+    document.createTextNode("email: example@example.com")
+], {
+    cssClass: [
+        "footer__email"
+    ],
+    attrs: {
+        href: "example@example.com"
     }
-}
-function calcAmountPrice() {
-    const cartItems = document.querySelectorAll(".cart-item__price");
-    let totalPrice = 0;
-    cartItems.forEach((price)=>{
-        totalPrice += parseFloat(price.textContent);
-    });
-    const cartAmountElement = document.querySelector(".cart-total__amount");
-    cartAmountElement.textContent = totalPrice + " $";
+});
+const phoneElement = (0, _createElement.createElement)("a", [
+    document.createTextNode("tel: +123456789")
+], {
+    cssClass: [
+        "footer__phone"
+    ],
+    attrs: {
+        href: "tel:+1234567890"
+    }
+});
+const contactsElement = (0, _createElement.createElement)("div", [
+    phoneElement,
+    emailElement
+], {
+    cssClass: [
+        "footer__contacts"
+    ]
+});
+const textElement = (0, _createElement.createElement)("p", [
+    document.createTextNode("*only for the same region")
+], {
+    cssClass: [
+        "footer__text"
+    ]
+});
+const titleElement = (0, _createElement.createElement)("h2", [
+    document.createTextNode("Free Shipping Services")
+], {
+    cssClass: [
+        "footer__title"
+    ]
+});
+const containerElement = (0, _createElement.createElement)("div", [
+    titleElement,
+    textElement,
+    contactsElement
+], {
+    cssClass: [
+        "container",
+        "footer-container"
+    ]
+});
+const footerElement = (0, _createElement.createElement)("div", [
+    containerElement
+], {
+    cssClass: [
+        "footer"
+    ]
+});
+(0, _render.render)(footerElement, "#root");
+
+},{"../utils/createElement":"c7i4C","../utils/render":"d8Qkz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gWZJw":[function(require,module,exports) {
+var _cards = require("../components/cards");
+var _render = require("./render");
+var _main = require("../components/main");
+var _debounce = require("./debounce");
+var _preloader = require("../components/preloader");
+(0, _main.searchElement).addEventListener("input", (0, _debounce.debounce)(searchItems, 500));
+async function searchItems(event) {
+    const searchText = event.target.value.trim().toLowerCase();
+    const productContainer = document.querySelector(".main__product-cards");
+    productContainer.innerHTML = "";
+    (0, _preloader.preloader).classList.add("preloader--active");
+    try {
+        const response = await fetch(`https://634c0fbd317dc96a30907dcb.mockapi.io/CARDS?search=${searchText}`);
+        if (!response.ok) {
+            (0, _render.render)((0, _main.notFoundMessageElement), ".main__product-cards");
+            throw new Error("No products found with this name");
+        }
+        const data = await response.json();
+        data.map((productData)=>{
+            const productCard = (0, _cards.createCard)(productData);
+            (0, _render.render)(productCard, ".main__product-cards");
+        });
+    } catch (error) {
+        console.log("Error while executing the request:", error);
+    }
+    (0, _preloader.preloader).classList.remove("preloader--active");
 }
 
-},{"./main":"gLLPy","./cart":"dgms5","./createElement":"hqWTp","./render":"lPFSt"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
+},{"../components/cards":"kZUEy","./render":"d8Qkz","../components/main":"lDxZi","./debounce":"ai2oT","../components/preloader":"bRV95"}],"ai2oT":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "debounce", ()=>debounce);
+function debounce(func, delay) {
+    let timeroutId;
+    return function executedFunction(...args) {
+        clearTimeout(timeroutId);
+        timeroutId = setTimeout(()=>{
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kkC9i":[function(require,module,exports) {
+var _\u0441artItems = require("../components/\u0441artItems");
+async function addToCart(event) {
+    if (event.target.closest(".product-card__button")) {
+        event.preventDefault();
+        const buttonId = event.target.getAttribute("id");
+        try {
+            const responce = await fetch(`https://634c0fbd317dc96a30907dcb.mockapi.io/CARDS/${buttonId}`);
+            if (!responce.ok) throw new Error("Whoops");
+            const productData = await responce.json();
+            const uniqueKey = `${buttonId}_${Date.now()}`;
+            const productInfo = JSON.stringify({
+                id: productData.id,
+                title: productData.title,
+                priceLast: productData.priceLast
+            });
+            localStorage.setItem(uniqueKey, productInfo);
+        } catch (error) {
+            console.log("Error while fetching product data:", error);
+        }
+    }
+    (0, _\u0441artItems.updateCartNotification)();
+}
+const productCardsContainer = document.querySelector(".main__product-cards");
+productCardsContainer.addEventListener("click", addToCart);
+
+},{"../components/сartItems":"hrp3s"}]},["farZc","8lqZg"], "8lqZg", "parcelRequirebf5a")
 
 //# sourceMappingURL=index.975ef6c8.js.map

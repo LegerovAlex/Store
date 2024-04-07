@@ -1,3 +1,5 @@
+import { updateCartNotification } from "../components/сartItems";
+
 async function addToCart(event) {
   if (event.target.closest(".product-card__button")) {
     event.preventDefault();
@@ -21,6 +23,7 @@ async function addToCart(event) {
       console.log("Error while fetching product data:", error);
     }
   }
+  updateCartNotification();
 }
 
 const productCardsContainer = document.querySelector(".main__product-cards");

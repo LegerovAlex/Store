@@ -30,19 +30,14 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
-  display: flex;
-}
-
-.header-content__description {
-  flex-direction: column;
-  gap: 30px;
-  max-width: 420px;
+  max-width: 450px;
   display: flex;
 }
 
 .header-content__title {
   color: #eff7f5;
   letter-spacing: 1.5px;
+  text-align: center;
   font-size: 64px;
   font-weight: 500;
   line-height: 72px;
@@ -51,6 +46,7 @@
 .header-content__subtitle {
   color: #eff7f5;
   letter-spacing: .3px;
+  text-align: center;
   font-size: 16px;
   font-weight: 400;
   line-height: 28px;
@@ -125,6 +121,22 @@
   border-radius: 50px;
   width: 80px;
   padding: 10px;
+  position: relative;
+}
+
+.notification-circle {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 19px;
+}
+
+.notification-circle--active {
+  display: block;
 }
 
 .not-found-message {

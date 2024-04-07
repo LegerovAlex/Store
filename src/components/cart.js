@@ -1,5 +1,5 @@
-import { createElement } from "./createElement";
-import { render } from "./render";
+import { createElement } from "../utils/createElement";
+import { render } from "../utils/render";
 
 export const modalButtonOrderElement = createElement(
   "div",
@@ -9,9 +9,13 @@ export const modalButtonOrderElement = createElement(
   }
 );
 
-export const cartAmountElement = createElement("div", [], {
-  cssClass: ["cart-total__amount"],
-});
+export const cartAmountElement = createElement(
+  "div",
+  [document.createTextNode("0 $")],
+  {
+    cssClass: ["cart-total__amount"],
+  }
+);
 
 const cartLabelElement = createElement(
   "div",
